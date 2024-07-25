@@ -1,4 +1,4 @@
-import { SideNavItem } from "./types/types";
+import { SideNavItem, SideNavItemGroup } from "./types/types";
 import {
   BsEnvelope,
   BsGear,
@@ -7,6 +7,59 @@ import {
   BsListUl,
   BsQuestionCircle,
 } from "react-icons/bs";
+
+export const SIDENAV_ITEMS_GROUP: SideNavItemGroup[] = [
+  {
+    title: "Dashboards",
+    menuList: [
+      {
+        title: "Dashboard",
+        path: "/",
+        icon: <BsHouseDoor size={20} />,
+      },
+    ],
+  },
+  {
+    title: "Manage",
+    menuList: [
+      {
+        title: "Products",
+        path: "/products",
+        icon: <BsKanban size={20} />,
+        submenu: true,
+        subMenuItems: [
+          { title: "All", path: "/products" },
+          { title: "New", path: "/products/new" },
+        ],
+      },
+      {
+        title: "Orders",
+        path: "/orders",
+        icon: <BsListUl size={20} />,
+      },
+      {
+        title: "Feedback",
+        path: "/feedback",
+        icon: <BsEnvelope size={20} />,
+      },
+    ],
+  },
+  {
+    title: "Others",
+    menuList: [
+      {
+        title: "Account",
+        path: "/account",
+        icon: <BsGear size={20} />,
+      },
+      {
+        title: "Help",
+        path: "/help",
+        icon: <BsQuestionCircle size={20} />,
+      },
+    ],
+  },
+];
 
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {

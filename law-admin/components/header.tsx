@@ -1,19 +1,14 @@
 import { BsList } from "react-icons/bs";
-import { Dispatch, SetStateAction } from "react";
 import classNames from "classnames";
+import { useSideBarToggle } from "@/hooks/use-sidebar-toggle";
 
-export default function Header({
-  toggleCollapse,
-  setToggleCollapse,
-}: {
-  toggleCollapse: boolean;
-  setToggleCollapse: Dispatch<SetStateAction<boolean>>;
-}) {
+export default function Header() {
+  const { toggleCollapse, invokeToggleCollapse } = useSideBarToggle();
   const sideBarToggle = () => {
-    setToggleCollapse(!toggleCollapse);
+    invokeToggleCollapse();
   };
   const headerStyles = classNames(
-    "fixed bg-[#31353d] w-full z-0 px-4 shadow-sm shadow-slate-500/40",
+    "fixed bg-[#31353d] w-full z-[9999] px-4 shadow-sm shadow-slate-500/40",
     {
       ["sm:pl-[5rem]"]: toggleCollapse,
       ["sm:pl-[15rem]"]: !toggleCollapse,

@@ -4,25 +4,27 @@ import Link from "next/link";
 import { BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSideBarToggle } from "@/hooks/use-sidebar-toggle";
 
-export const SideBarMenuItem = ({
-  item,
-  toggleCollapse,
-}: {
-  item: SideNavItem;
-  toggleCollapse: boolean;
-}) => {
+export const SideBarMenuItem = ({ item }: { item: SideNavItem }) => {
+  const { toggleCollapse } = useSideBarToggle();
   const pathName = usePathname();
+
   const linkStyle =
     "flex items-center  min-h-[40px] h-full text-[#6e768e] hover:text-white py-2 px-4 transition duration-200";
+
   const activeLinkStyle =
     "rounded-md text-white light:text-black light:bg-[#efefef] bg-[#3a3f48]";
+
   const navMenuDropDownItem =
     "text-[#6e768e] py-2 px-4 hover:text-white transition duration-200";
+
   const [subMenuOpen, setSubMenuOpen] = useState(false);
+
   const toggleSubMenu = () => {
     setSubMenuOpen(!subMenuOpen);
   };
+
   return (
     <>
       {item.submenu ? (
